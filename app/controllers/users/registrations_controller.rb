@@ -1,6 +1,8 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   include RackSessionFix
   respond_to :json
+  before_action :configure_sign_up_params, only: [:create]
+  before_action :configure_account_update_params, only: [:update]
   private
 
   def respond_with(resource, _opts = {})
@@ -19,4 +21,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
       }, status: :unprocessable_entity
     end
   end
+end
+
+def configure_sign_up_params()
+  devise_parameter_sanitizer.permit(:sign_up, keys:[:first_name, :last_name, :phone_number])
+end
+
+def configure_account_update_params()
+  devise_parameter_sanitizer.permit(:sign_up, keys:[:first_name, :last_name, :phone_number])
 end

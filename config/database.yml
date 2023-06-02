@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: sorcery_portal_backend_production
-  username: sorcery_portal_backend
-  password: <%= ENV["SORCERY_PORTAL_BACKEND_DATABASE_PASSWORD"] %>
+  url: <%= ENV[ 'DATABASE_URL' ] %>

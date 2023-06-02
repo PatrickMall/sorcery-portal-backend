@@ -49,8 +49,16 @@ module Api
                 @answer = current_user.answers.find_by(Question_number: question_number)
                 @answer.user_id= current_user.id
             @answer.destroy
-          render json: {status: 'SUCCESS', message: 'Answers successfully deleted', data:@answer}, status: :ok
+          render json: {status: 'SUCCESS', message: 'Answer successfully deleted', data:@answer}, status: :ok
             end
+        end
+
+        def destroy_all
+            if current_user
+            @answers = current_user.answers
+            @answers.destroy_all
+            render json: {status: 'SUCCESS', message: 'Answers were all successfully deleted', data:@answers}, status: :ok
+          end
         end
   
         private

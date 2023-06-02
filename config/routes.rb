@@ -10,9 +10,13 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  namespace 'api' do 
-    namespace 'v1' do 
-      resources :answers
+  namespace 'api' do
+    namespace 'v1' do
+      resources :answers do
+        collection do
+          delete 'destroy_all' # Custom route to destroy all answers
+        end
+      end
       resources :users
     end
   end

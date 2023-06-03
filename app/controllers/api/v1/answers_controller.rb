@@ -13,7 +13,7 @@ module Api
         def show
             if current_user 
                 question_number = params[:id]
-          @answer = current_user.answers.find_by(Question_number: question_number)
+          @answer = current_user.answers.find_by(question_id: question_number)
           render json: {status: 'SUCCESS', message: 'Loaded answers', data:@answer}, status: :ok
             end
         end
@@ -33,7 +33,7 @@ module Api
         def update
             if current_user
                 question_number = params[:id]
-                @answer = current_user.answers.find_by(Question_number: question_number)
+                @answer = current_user.answers.find_by(question_id: question_number)
                 @answer.user_id= current_user.id
                 if @answer.update(answer_params)
                     render json: {status: 'SUCCESS', message: 'answer is updated', data:@answer}, status: :ok
@@ -46,7 +46,7 @@ module Api
         def destroy
             if current_user
                 question_number = params[:id]
-                @answer = current_user.answers.find_by(Question_number: question_number)
+                @answer = current_user.answers.find_by(question_id: question_number)
                 @answer.user_id= current_user.id
             @answer.destroy
           render json: {status: 'SUCCESS', message: 'Answer successfully deleted', data:@answer}, status: :ok
@@ -63,7 +63,7 @@ module Api
   
         private
           def answer_params
-            params.permit(:Question_number, :Answer)
+            params.permit(:question_id, :answer)
           end
   
       end

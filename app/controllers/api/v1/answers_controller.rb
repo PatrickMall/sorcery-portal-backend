@@ -14,7 +14,7 @@ module Api
             if current_user 
                 question_number = params[:id]
           @answer = current_user.answers.find_by(question_id: question_number)
-          render json: {status: 'SUCCESS', message: 'Loaded answers', data:@answer}, status: :ok
+          render json: {status: 'SUCCESS', message: 'Loaded answers', data: @answer}, status: :ok
             end
         end
   

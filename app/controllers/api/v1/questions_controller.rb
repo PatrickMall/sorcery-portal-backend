@@ -4,14 +4,14 @@ module Api
         before_action :authenticate_user!
   
         def index
-        # if current_user
+        if current_user
             questions = Question.all
             render json: { status: 'SUCCESS', message: 'Loaded questions', data: questions }, status: :ok
         end
         end
   
         def show
-            # if current_user 
+            if current_user 
                 question_id = params[:id]
           question = Question.find_by(id: question_id)
           render json: {status: 'SUCCESS', message: 'Loaded answers', data:question}, status: :ok
@@ -19,7 +19,7 @@ module Api
         end
   
         def create
-            # if current_user 
+            if current_user 
           question = Question.new(question_params)
                  if question.save
                     render json: {status: 'SUCCESS', message: 'Question has been saved', data:question}, status: :ok
@@ -30,7 +30,7 @@ module Api
         end
   
         def update
-            # if current_user
+            if current_user
                 question_number = params[:id]
                 question = Question.find_by(id: question_number)
                 if question.update(question_params)

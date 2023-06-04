@@ -42,7 +42,7 @@ module Api
         end
   
         def destroy
-            # if current_user
+            if current_user
                 question_number = params[:id]
                 question = Question.find_by(id: question_number)
             question.destroy

@@ -27,6 +27,7 @@ private
     elsif request.method == "PATCH" && resource.persisted?
       render json: {
         status: { code: 200, message: "Account updated successfully."}
+        data: UserSerializer.new(resource).serializable_hash[:data][:attributes]
       }, status: :ok
     else
       render json: {

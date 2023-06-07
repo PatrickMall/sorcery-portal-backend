@@ -33,7 +33,7 @@ module Api
         def update
             if current_user
                 question_number = params[:id]
-                @answer = current_user.answers.find_by(question_id: question_number).order(question_id: :desc)
+                @answer = current_user.answers.find_by(question_id: question_number)
                 @answer.user_id= current_user.id
                 if @answer.update(answer_params)
                     render json: {status: 'SUCCESS', message: 'answer is updated', data:@answer}, status: :ok

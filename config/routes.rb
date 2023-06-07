@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     namespace 'v1' do
       resources :answers do
         collection do
-          delete 'destroy_all' # Custom route to destroy all answers
+          delete 'destroy_all'
         end
       end
       resources :users

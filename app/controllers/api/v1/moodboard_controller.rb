@@ -1,6 +1,6 @@
 module Api
     module V1
-      class MoodboardsController < ApplicationController
+      class MoodboardController < ApplicationController
         before_action :authenticate_user!
   
         def index

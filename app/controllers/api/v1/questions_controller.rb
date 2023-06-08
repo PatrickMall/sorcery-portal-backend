@@ -18,6 +18,8 @@ module Api
             end
         end
   
+
+        # test
         def create
             if current_user 
           question = Question.new(question_params)

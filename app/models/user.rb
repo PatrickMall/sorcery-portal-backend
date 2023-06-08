@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   has_many :answers,
   dependent: :destroy
+  has_many :moodboards,
+  dependent: :destroy
   include Devise::JWT::RevocationStrategies::JTIMatcher
 
   devise :database_authenticatable, :registerable, :validatable,
